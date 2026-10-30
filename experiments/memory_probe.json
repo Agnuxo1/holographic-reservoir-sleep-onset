@@ -1,0 +1,70 @@
+[
+ {
+  "label": "EMA_mitades=(2,)",
+  "wbmae": 52.25492199073232
+ },
+ {
+  "label": "EMA_mitades=(2, 6, 24)",
+  "wbmae": 52.42383402273251
+ },
+ {
+  "label": "EMA_mitades=(6,)",
+  "wbmae": 52.51304103919051
+ },
+ {
+  "label": "residual_size=200_leak=0.5_alpha=100.0",
+  "wbmae": 52.674374645917254
+ },
+ {
+  "label": "reservorio_leak=0.7_alpha=30.0",
+  "wbmae": 52.70355035996326
+ },
+ {
+  "label": "reservorio_leak=0.7_alpha=10.0",
+  "wbmae": 52.80330633708327
+ },
+ {
+  "label": "reservorio_leak=0.85_alpha=10.0",
+  "wbmae": 52.825417847123475
+ },
+ {
+  "label": "reservorio_leak=0.85_alpha=3.0",
+  "wbmae": 52.82616061784984
+ },
+ {
+  "label": "reservorio_leak=0.7_alpha=3.0",
+  "wbmae": 52.83437528255301
+ },
+ {
+  "label": "D_sin_memoria_alpha3",
+  "wbmae": 52.841490803863216
+ },
+ {
+  "label": "reservorio_leak=0.85_alpha=30.0",
+  "wbmae": 52.8606958196705
+ },
+ {
+  "label": "residual_size=200_leak=0.8_alpha=30.0",
+  "wbmae": 52.91213993142241
+ },
+ {
+  "label": "D_sin_memoria_alpha10",
+  "wbmae": 52.94784495033154
+ },
+ {
+  "label": "reservorio_leak=0.95_alpha=3.0",
+  "wbmae": 52.96275899976558
+ },
+ {
+  "label": "reservorio_leak=0.95_alpha=10.0",
+  "wbmae": 52.98545015766604
+ },
+ {
+  "label": "reservorio_leak=0.95_alpha=30.0",
+  "wbmae": 53.064426512236
+ },
+ {
+  "label": "EMA_mitades=(12, 48)",
+  "wbmae": 53.86057117752886
+ }
+]

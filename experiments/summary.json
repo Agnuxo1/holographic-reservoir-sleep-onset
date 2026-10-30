@@ -1,0 +1,258 @@
+{
+ "seen": {
+  "per_model": {
+   "A_constante": {
+    "mean": 61.88643532987112,
+    "std": 1.2917945905585044,
+    "n_folds": 5
+   },
+   "B_ridge_sin_estado": {
+    "mean": 53.68570581655403,
+    "std": 1.421532221473161,
+    "n_folds": 5
+   },
+   "C_solo_reloj": {
+    "mean": 55.762407008285116,
+    "std": 2.979382573308741,
+    "n_folds": 5
+   },
+   "D_reloj_mas_ventana": {
+    "mean": 50.409285602410186,
+    "std": 2.0851595403790615,
+    "n_folds": 5
+   },
+   "E_reservorio_holografico": {
+    "mean": 51.47309843385581,
+    "std": 1.816318020705396,
+    "n_folds": 5
+   },
+   "F_reservorio_esn": {
+    "mean": 51.469610965186504,
+    "std": 1.8157389168367208,
+    "n_folds": 5
+   },
+   "G_reservorio_sin_reloj": {
+    "mean": 53.68535219495111,
+    "std": 1.0811447435812511,
+    "n_folds": 5
+   },
+   "H_reservorio_solo_estado": {
+    "mean": 52.749784531194635,
+    "std": 2.42808434681202,
+    "n_folds": 5
+   },
+   "I_memoria_explicita_10s": {
+    "mean": 50.0596350882705,
+    "std": 2.048031683427155,
+    "n_folds": 5
+   },
+   "J_reservorio_residual": {
+    "mean": 50.768322381239166,
+    "std": 1.9881054332699821,
+    "n_folds": 5
+   }
+  },
+  "paired": [
+   {
+    "a": "E_reservorio_holografico",
+    "b": "D_reloj_mas_ventana",
+    "mean": 1.0638128314456154,
+    "std": 0.7726178700053746,
+    "n_folds": 5,
+    "a_wins": 1
+   },
+   {
+    "a": "E_reservorio_holografico",
+    "b": "F_reservorio_esn",
+    "mean": 0.003487468669302984,
+    "std": 0.0018865751125905716,
+    "n_folds": 5,
+    "a_wins": 0
+   },
+   {
+    "a": "I_memoria_explicita_10s",
+    "b": "D_reloj_mas_ventana",
+    "mean": -0.3496505141396867,
+    "std": 0.1559440491544816,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "I_memoria_explicita_10s",
+    "b": "E_reservorio_holografico",
+    "mean": -1.413463345585302,
+    "std": 0.733355506786685,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "J_reservorio_residual",
+    "b": "D_reloj_mas_ventana",
+    "mean": 0.3590367788289754,
+    "std": 0.363398064477652,
+    "n_folds": 5,
+    "a_wins": 1
+   },
+   {
+    "a": "H_reservorio_solo_estado",
+    "b": "E_reservorio_holografico",
+    "mean": 1.276686097338829,
+    "std": 0.673418685865185,
+    "n_folds": 5,
+    "a_wins": 0
+   },
+   {
+    "a": "D_reloj_mas_ventana",
+    "b": "B_ridge_sin_estado",
+    "mean": -3.276420214143836,
+    "std": 2.5507743108818413,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "C_solo_reloj",
+    "b": "A_constante",
+    "mean": -6.124028321586006,
+    "std": 2.4477332604300637,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "B_ridge_sin_estado",
+    "b": "A_constante",
+    "mean": -8.200729513317093,
+    "std": 1.3425278268817387,
+    "n_folds": 5,
+    "a_wins": 5
+   }
+  ]
+ },
+ "unseen": {
+  "per_model": {
+   "A_constante": {
+    "mean": 61.88071103365279,
+    "std": 1.0220201820766739,
+    "n_folds": 5
+   },
+   "B_ridge_sin_estado": {
+    "mean": 54.40176561179811,
+    "std": 1.0148765791964072,
+    "n_folds": 5
+   },
+   "C_solo_reloj": {
+    "mean": 56.748767919560656,
+    "std": 1.5558760405992824,
+    "n_folds": 5
+   },
+   "D_reloj_mas_ventana": {
+    "mean": 51.72822514339737,
+    "std": 1.565131656543934,
+    "n_folds": 5
+   },
+   "E_reservorio_holografico": {
+    "mean": 52.717248913479374,
+    "std": 1.372283326363384,
+    "n_folds": 5
+   },
+   "F_reservorio_esn": {
+    "mean": 52.71435671388688,
+    "std": 1.371061904005756,
+    "n_folds": 5
+   },
+   "G_reservorio_sin_reloj": {
+    "mean": 54.54525748309885,
+    "std": 1.400853646955939,
+    "n_folds": 5
+   },
+   "H_reservorio_solo_estado": {
+    "mean": 53.83997398635434,
+    "std": 1.3731929068169388,
+    "n_folds": 5
+   },
+   "I_memoria_explicita_10s": {
+    "mean": 51.211441843186535,
+    "std": 1.4395821173690357,
+    "n_folds": 5
+   },
+   "J_reservorio_residual": {
+    "mean": 52.11035361679551,
+    "std": 1.4695099349659613,
+    "n_folds": 5
+   }
+  },
+  "paired": [
+   {
+    "a": "E_reservorio_holografico",
+    "b": "D_reloj_mas_ventana",
+    "mean": 0.9890237700820166,
+    "std": 1.0244722695115072,
+    "n_folds": 5,
+    "a_wins": 1
+   },
+   {
+    "a": "E_reservorio_holografico",
+    "b": "F_reservorio_esn",
+    "mean": 0.002892199592497491,
+    "std": 0.0015657155951145142,
+    "n_folds": 5,
+    "a_wins": 0
+   },
+   {
+    "a": "I_memoria_explicita_10s",
+    "b": "D_reloj_mas_ventana",
+    "mean": -0.5167833002108295,
+    "std": 0.2440969872620104,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "I_memoria_explicita_10s",
+    "b": "E_reservorio_holografico",
+    "mean": -1.505807070292846,
+    "std": 0.8196673270192075,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "J_reservorio_residual",
+    "b": "D_reloj_mas_ventana",
+    "mean": 0.3821284733981557,
+    "std": 0.18383509625354127,
+    "n_folds": 5,
+    "a_wins": 0
+   },
+   {
+    "a": "H_reservorio_solo_estado",
+    "b": "E_reservorio_holografico",
+    "mean": 1.122725072874951,
+    "std": 0.2836734758263769,
+    "n_folds": 5,
+    "a_wins": 0
+   },
+   {
+    "a": "D_reloj_mas_ventana",
+    "b": "B_ridge_sin_estado",
+    "mean": -2.6735404684007533,
+    "std": 1.5581054115123036,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "C_solo_reloj",
+    "b": "A_constante",
+    "mean": -5.131943114092129,
+    "std": 2.2211717583850126,
+    "n_folds": 5,
+    "a_wins": 5
+   },
+   {
+    "a": "B_ridge_sin_estado",
+    "b": "A_constante",
+    "mean": -7.4789454218546725,
+    "std": 0.6869734620254697,
+    "n_folds": 5,
+    "a_wins": 5
+   }
+  ]
+ }
+}

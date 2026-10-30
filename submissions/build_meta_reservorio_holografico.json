@@ -1,0 +1,16 @@
+{
+ "model": "E",
+ "kind": "reservoir",
+ "name": "HolographicReservoir-Sleep",
+ "alpha": 10.0,
+ "halflives": [
+  2.0
+ ],
+ "size": 100,
+ "leak": 0.7,
+ "seed": 0,
+ "n_train_windows": 61303,
+ "n_train_records": 412,
+ "wbmae_offline_public_test": 55.741,
+ "zip_bytes": 78565
+}
