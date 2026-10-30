@@ -25,8 +25,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from models import (ConstantModel, ElapsedQuantile, ReservoirStream,  # noqa
-                    StatelessRidge, metric_weights, wbmae_recording_mean)
+from models import (CAP_S, ConstantModel, ElapsedQuantile,  # noqa
+                    EmaRidge, ReservoirStream, StatelessRidge,
+                    elapsed_features, metric_weights,
+                    wbmae_recording_mean)
 
 WINDOW_S = 5.0
 CAP_S = 600.0
@@ -94,13 +96,57 @@ def check_streaming_contract(train, test):
         current.state = ((1.0 - current.leak) * current.state
                          + current.leak * np.tanh(
                              current.W_in @ u + current.W @ current.state))
-        Z = current._inputs(current.state[None], [current.k * WINDOW_S])
+        Z = current._inputs(current.state[None], [current.k * WINDOW_S],
+                            feats[i:i + 1])
         streamed[i] = current.core.predict(Z)[0]
         current.k += 1
 
     gap = float(np.max(np.abs(streamed - offline)))
     assert gap < 1e-9, f"streaming y offline difieren en {gap}"
     print(f"[ok] contrato de streaming: diferencia maxima {gap:.2e}")
+
+
+def check_ema_streaming(train, test):
+    """The submitted model: window by window must match the offline fit.
+
+    EmaRidge is what actually ships, so its streamed path is the one that has
+    to agree with the predictions the cross-validation scored.
+    """
+    import copy
+
+    model = EmaRidge(alpha=10.0, halflives=(2,)).fit(train)
+    order = np.lexsort((test["elapsed"], test["record_id"]))
+    feats = test["feats"][order]
+    elapsed = test["elapsed"][order]
+    records = test["record_id"][order]
+    offline = model.predict_feats(feats, elapsed, records)
+
+    streamed = np.empty(len(feats))
+    current = None
+    previous = None
+    for i in range(len(feats)):
+        if records[i] != previous:
+            current = copy.deepcopy(model)
+            current.reset_state()
+            previous = records[i]
+        row = feats[i]
+        if current.ema is None:
+            current.ema = [row.copy() for _ in current.halflives]
+        for j, halflife in enumerate(current.halflives):
+            decay = 0.5 ** (1.0 / halflife)
+            current.ema[j] = decay * current.ema[j] + (1.0 - decay) * row
+        parts = [row[None], np.concatenate(current.ema)[None],
+                 elapsed_features([current.k * WINDOW_S])]
+        if current.prior is not None:
+            parts.append(current.prior.lookup(
+                [current.k * WINDOW_S]).reshape(-1, 1) / CAP_S)
+        streamed[i] = current.core.predict(
+            np.concatenate(parts, axis=1))[0]
+        current.k += 1
+
+    gap = float(np.max(np.abs(streamed - offline)))
+    assert gap < 1e-9, f"EmaRidge: streaming y offline difieren en {gap}"
+    print(f"[ok] contrato de streaming (modelo enviado): {gap:.2e}")
 
 
 def check_ladder(train, test):
@@ -133,6 +179,7 @@ def main():
     print(f"sintetico: {len(data['y'])} ventanas, {len(subjects)} grabaciones")
     check_metric_weights(data)
     check_streaming_contract(train, test)
+    check_ema_streaming(train, test)
     check_ladder(train, test)
     print("\ntodas las comprobaciones pasan")
 
