@@ -1,0 +1,10 @@
+{
+ "submission": "submissions/memoria_explicita",
+ "wbmae_recording_mean": 55.81630288484197,
+ "wbmae_recording_std": 29.617467590361443,
+ "bmae": 142.4831074249895,
+ "mae": 276.1807972114164,
+ "n_recordings": 40,
+ "n_windows": 5869,
+ "inference_seconds": 11.9
+}

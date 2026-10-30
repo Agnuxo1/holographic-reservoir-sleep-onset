@@ -1,0 +1,74 @@
+[
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 3.0,
+  "wbmae": 52.841490803863216,
+  "seconds": 6.4
+ },
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 10.0,
+  "wbmae": 52.94784495033154,
+  "seconds": 6.8
+ },
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 30.0,
+  "wbmae": 53.11164007915504,
+  "seconds": 5.7
+ },
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 100.0,
+  "wbmae": 53.9611204038764,
+  "seconds": 2.5
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 30.0,
+  "wbmae": 55.7137602692547,
+  "seconds": 4.5
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 3.0,
+  "wbmae": 55.72284787610982,
+  "seconds": 4.4
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 10.0,
+  "wbmae": 55.72687928809143,
+  "seconds": 3.7
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 100.0,
+  "wbmae": 56.027406755243646,
+  "seconds": 2.5
+ },
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 300.0,
+  "wbmae": 56.98027505588859,
+  "seconds": 2.9
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 300.0,
+  "wbmae": 58.02516896403177,
+  "seconds": 2.1
+ },
+ {
+  "model": "D_reloj_mas_ventana",
+  "alpha": 1000.0,
+  "wbmae": 63.42485118104788,
+  "seconds": 3.2
+ },
+ {
+  "model": "B_ridge_sin_estado",
+  "alpha": 1000.0,
+  "wbmae": 63.53832754532122,
+  "seconds": 1.7
+ }
+]
