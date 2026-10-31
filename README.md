@@ -1,4 +1,14 @@
+<div align="center">
+
+<img src="docs/readme/01-banner.gif" alt="Sleep-onset latency from home EEG: four EEG traces calming while a countdown bar shrinks" width="100%">
+
 # Sleep-Onset Latency from Four-Channel Home EEG (Track 03)
+
+[![licence: Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-199e70?style=flat-square)](LICENSE) [![W-bMAE: 55.816 public test](https://img.shields.io/badge/W--bMAE-55.816%20public%20test-199e70?style=flat-square)](experiments/official_check.json) [![submission: 7.6 kB, numpy only](https://img.shields.io/badge/submission-7.6%20kB,%20numpy%20only-3987e5?style=flat-square)](submissions/METHOD.md) ![training: CPU only](https://img.shields.io/badge/training-CPU%20only-3987e5?style=flat-square) ![status: nothing submitted yet](https://img.shields.io/badge/status-nothing%20submitted%20yet-c98500?style=flat-square) [![data: NEMAR nm000287, not redistributed](https://img.shields.io/badge/data-NEMAR%20nm000287,%20not%20redistributed-5b6785?style=flat-square)](https://nemar.org/dataexplorer/detail?dataset_id=nm000287) [![challenge: Track 03, sleep onset](https://img.shields.io/badge/challenge-Track%2003,%20sleep%20onset-9085e9?style=flat-square)](https://neural-interfaces26.github.io/)
+
+[**Headline result**](#headline-result) · [**How it works**](#how-it-works) · [**Results in full**](#results-in-full) · [**Observations**](#observations) · [**Method**](submissions/METHOD.md) · [**Experiment log**](experiments/LOG.md) · [**Bibliography**](#bibliography)
+
+</div>
 
 Entry for **Track 03 — Sleep onset** of the [EEG/EMG Foundation Challenge
 2026](https://neural-interfaces26.github.io/) (NeuralBench, Brain & Body Workshop at
@@ -11,7 +21,11 @@ Licence: Apache-2.0.
 
 ---
 
+**Contents** — [Headline result](#headline-result) · [How it works](#how-it-works) · [Background](#background) · [Results in full](#results-in-full) · [Reproducing](#reproducing) · [Observations](#observations) · [Real-world applications](#real-world-applications) · [Possible improvements](#possible-improvements) · [Future work](#future-work) · [Bibliography](#bibliography)
+
 ## Headline result
+
+<p align="center"><img src="docs/readme/02-headline.gif" alt="Bars comparing this entry with the four baselines the organisers published, plus three stat tiles" width="100%"><br><sub>Animated figure A1 — Public test split, lower is better. Data: the table below and experiments/official_check.json.</sub></p>
 
 **W-bMAE 55.816 on the public test split, scored through the competition's own evaluation
 harness — 4.3 s better than the best published baseline.**
@@ -41,13 +55,19 @@ A100. Training used **CPU only** — no GPU at any point, for any model in this 
 
 ## How it works
 
+<p align="center"><img src="docs/readme/03-ingredients.gif" alt="Bars for what each of the four ingredients is worth in seconds of W-bMAE" width="100%"><br><sub>Animated figure A2 — What each ingredient contributes. Data: this section's own numbers.</sub></p>
+
 Three ingredients, in order of how much each is worth.
+
+<p align="center"><img src="docs/readme/04-readout.gif" alt="A schematic of the readout change, with the repository's own weight check printed beneath it" width="100%"><br><sub>Animated figure A3 — Schematic of the fit, plus a real run of code/test_ladder.py.</sub></p>
 
 **1. Fitting the readout to the competition's actual loss (−5.8 s).** The ranking metric is
 a *weighted absolute* error; a ridge minimises a squared one. Each window is given the
 weight that makes a weighted mean absolute error equal the ranking metric exactly, and the
 linear readout is then fitted by iteratively reweighted least squares. This single change
 is worth more than any architecture tried here.
+
+<p align="center"><img src="docs/readme/05-features.gif" alt="Four cards describing the band powers, the log ratios, the Hjorth parameters and the clipping flag" width="100%"><br><sub>Animated figure A4 — Schematic of the feature front end. Source: code/features.py.</sub></p>
 
 **2. Classical spectral features (−7.5 s against the constant).** Per 5 s window and
 channel: log and relative band powers in delta, theta, alpha, sigma and beta; four log
@@ -72,7 +92,41 @@ cross-validation folds of both regimes.
 Nothing here touches the sealed split, uses non-permitted data or modifies the scoring
 harness (rule 06). It uses the state the harness explicitly offers.
 
+## Background
+
+<p align="center"><img src="docs/readme/06-background.gif" alt="Animated timeline from the Hjorth parameters in 1970 to this challenge in 2026" width="100%"><br><sub>Animated figure A5 — Milestones behind this work. Sources: bibliography below.</sub></p>
+
+Sleep onset is not an instant. Reviewing behavioural, EEG, physiological and subjective measures together,
+Ogilvie concluded that entry into sleep is a continuous, interwoven series of changes beginning in relaxed
+drowsiness rather than something that happens in a moment [[14](#ref-14)]. What the scoring rules fix is a
+convention on top of that process: the visual scoring standard defines the stages, and the first N2 epoch —
+the target here — is the point those rules identify [[4](#ref-4)]. The EEG markers used in this repository are
+long-standing ones: the sigma activity of sleep spindles is the characteristic feature of stage 2
+[[13](#ref-13)], and Hjorth's time-domain descriptors of activity, mobility and complexity date from 1970
+[[12](#ref-12)], computed here over Welch-style windowed spectra [[16](#ref-16)] — the band powers, ratios and Hjorth
+parameters of `code/features.py`.
+
+What is new is where the measurement happens. The recordings are at-home, four-channel Muse data
+[[2](#ref-2)], and that class of consumer headband has been validated for research use rather than assumed
+adequate [[3](#ref-3)]. Track 03 of the EEG/EMG Foundation Challenge asks for the seconds remaining until the
+first N2 epoch, scored as a weighted binned absolute error per recording [[1](#ref-1)]. The baselines the
+organisers published are the field's standard decoders — EEGNet, a compact convolutional network for EEG
+[[5](#ref-5)], CTNet, a convolutional transformer built for EEG decoding [[6](#ref-6)], and REVE, a pretrained EEG
+foundation model [[7](#ref-7)] — and none of them separates itself from a constant.
+
+This repository's explanation for that is structural, and it is the reason the entry keeps state. The
+official harness feeds each recording's windows one at a time, in time order, and calls `reset_state()`
+between recordings, so a model that keeps state can count its own calls and knows the elapsed time, while a
+per-window decoder cannot. The alternative way to keep state was the author's own one: echo state networks
+train only a linear readout over a fixed random recurrent state [[8](#ref-8)], a family surveyed in [[9](#ref-9)],
+and `holographic-reservoir` is that family with SHA-256-derived entropy on the recurrent diagonal
+[[10](#ref-10)]. It was measured against the same control and it lost; the fit itself was then changed instead,
+from a squared-error readout to iteratively reweighted least squares [[11](#ref-11)], which is what matched the
+ranking metric [[15](#ref-15)].
+
 ## Results in full
+
+<p align="center"><img src="docs/readme/07-paired.gif" alt="A forest plot of the seven within-fold comparisons, with the folds won beside each" width="100%"><br><sub>Animated figure A6 — Within-fold differences, mean ± sd over folds. Data: the paired table below and experiments/summary.json.</sub></p>
 
 Five-fold cross-validation, two regimes, three seeds for every model with a random
 substrate. `seen` holds out recordings of participants kept in training; `unseen` holds out
@@ -107,6 +161,8 @@ held-out recordings are the same for both models (negative favours the first):
 
 ## Reproducing
 
+<p align="center"><img src="docs/readme/10-reproduce.gif" alt="Terminal running code/test_ladder.py: the metric weights, the streaming contract and the ladder all pass" width="100%"><br><sub>Animated figure A7 — A real CPU run of the repository's own checks, 31 Oct 2026. The program's output is its own, in Spanish.</sub></p>
+
 The public data (NEMAR `nm000287`, 540 recordings, ~1.1 GB) is **not** redistributed here:
 it is downloaded from NEMAR under its own terms, and no signal, feature cache or
 participant-level artefact from it is committed to this repository.
@@ -140,6 +196,8 @@ offline fit to 1.4e-14, for the submitted model and for the reservoir.
 Things that did not work, or that qualify the result above. None of them changes the
 headline, and all of them are reported because leaving them out would be picking the data.
 
+<p align="center"><img src="docs/readme/08-reservoir.gif" alt="A ledger of four measurements of the holographic reservoir against the same control" width="100%"><br><sub>Animated figure A8 — The intended core, measured and rejected. Data: experiments/summary.json and experiments/memory_probe.json.</sub></p>
+
 **The Holographic-Reservoir did not contribute.** The author's
 [Holographic-Reservoir](https://pypi.org/project/holographic-reservoir/) — a sparse
 expander-graph reservoir with deterministic SHA-256 entropy on its diagonal, read out
@@ -156,6 +214,8 @@ repository, implemented and tuned, because the measurement is worth having.
 adding that entropy to the recurrent matrix's diagonal gives the same score to the last
 decimal as leaving it out. What remains is an echo-state network.
 
+<p align="center"><img src="docs/readme/09-caveats.gif" alt="A ledger of four things that qualify the headline result" width="100%"><br><sub>Animated figure A9 — What does not fit the headline. Data: this section and experiments/official_check.json.</sub></p>
+
 **One number points the other way.** On the public test split the reservoir scores 55.741,
 0.08 s *better* than the submitted model — the opposite of the cross-validation ordering.
 With 40 recordings that difference is noise, but it is there.
@@ -168,3 +228,96 @@ part of the advantage would go; model G is the variant that does not depend on i
 The feature front end is deliberately classical and no claim is made that it is the best
 possible encoder. No leaderboard position is claimed: nothing has been submitted at the
 time of writing.
+
+## Real-world applications
+
+<p align="center"><img src="docs/readme/11-applications.gif" alt="Six cards describing settings where these measurements could be reused" width="100%"><br><sub>Animated figure A10 — Potential reuse. Nothing here has been deployed or clinically validated.</sub></p>
+
+Insomnia symptoms are reported by about a third of the general population in epidemiological surveys
+[[15](#ref-15)], and sleep latency is one of the quantities those surveys turn on, so a latency estimate from a
+headband people already own is a plausible thing to want. None of the following has been built, deployed or
+clinically validated; each is a use the measurements here would support.
+
+- **Latency estimates on the device.** The submission is 7.6 kB, imports nothing but numpy, and scores the
+  40 public test recordings in 11.9 s, so the same model would run on a phone beside the headband
+  [[2](#ref-2), [3](#ref-3)].
+- **Fitting the readout to the metric that ranks.** Reweighting a linear readout so a weighted mean absolute
+  error equals the ranking metric exactly [[11](#ref-11)] was worth more here (−5.8 s) than any architecture
+  tried, and the same mismatch between a training loss and a scored quantity is a documented source of
+  misleading results [[15](#ref-15)].
+- **Honest ablations of streamed models.** Separating the clock from the EEG shows how much of a streamed
+  model's advantage is arithmetic rather than signal — a distinction that matters whenever a benchmark feeds
+  windows in time order [[1](#ref-1)].
+- **A worked negative for reservoir computing.** The reservoir is kept in the repository, implemented and
+  tuned, with the numbers that rejected it on this task [[8](#ref-8), [9](#ref-9), [10](#ref-10)].
+- **Streaming-contract checks before submitting.** `code/test_ladder.py` catches a model that would score
+  differently online than offline, which is the quiet failure mode of a stateful entry.
+- **A classical reference for learned encoders.** Band powers and Hjorth parameters [[12](#ref-12), [13](#ref-13)] give a
+  transparent front end against which a learned encoder [[5](#ref-5), [6](#ref-6), [7](#ref-7)] can be compared on the same
+  folds.
+
+## Possible improvements
+
+<p align="center"><img src="docs/readme/12-improvements.gif" alt="Measured limitations on the left turning into proposed next experiments on the right" width="100%"><br><sub>Animated figure A11 — Each improvement targets a limitation reported in this repository.</sub></p>
+
+- **Test the clock assumption instead of carrying it.** The elapsed-time counter assumes the sealed streams
+  start where the public ones do. Model G is the variant that does not depend on it, and submitting both
+  would settle the question rather than leave it as a caveat.
+- **Make the comparisons larger than their spread.** Fold-to-fold variation is ±1.5 to 2.5 s, larger than the
+  gaps between the leading models, which is why only within-fold differences are used. More folds or more
+  seeds would let the summary numbers carry weight too.
+- **Attack the reservoir's conditioning, not its hyper-parameters.** The stated cause of its loss is that its
+  state dimensions are strongly autocorrelated and ill-condition the fit, and it degrades the readout even on
+  training data. Whitening the state before the readout tests that explanation; another sweep of leak and
+  spectral radius does not [[9](#ref-9)].
+- **Compare the classical front end with a learned encoder under this protocol.** The feature set is
+  deliberately classical and no claim is made that it is the best encoder; EEGNet, CTNet and REVE
+  [[5](#ref-5), [6](#ref-6), [7](#ref-7)] were run by the organisers on their own terms, not within these folds.
+- **Report the uncertainty the way the sample supports.** With 40 public test recordings a 0.08 s difference
+  is noise; a resampling interval over recordings [[12](#ref-12)] would make that explicit next to the headline.
+
+## Future work
+
+<p align="center"><img src="docs/readme/13-roadmap.gif" alt="Roadmap with three documented milestones and three proposed next steps" width="100%"><br><sub>Animated figure A12 — The three filled markers are documented in this repository; the rest are proposals.</sub></p>
+
+Proposed next steps, not commitments. Only the first three are documented in this repository as done; the
+others are proposals and none is claimed as started:
+
+1. *Documented.* The ranking metric was reimplemented and checked identical to the kit's own on random
+   inputs, difference 0 (`experiments/LOG.md`).
+2. *Documented.* The ten-model ladder was measured in both regimes, five folds, three seeds for every model
+   with a random substrate (`experiments/summary.json`).
+3. *Documented.* The built submission was scored through the competition's own evaluation harness at 55.816
+   over the 40 public test recordings (`experiments/official_check.json`).
+4. Submit; nothing had been submitted at the time of writing, so no leaderboard position exists
+   [[1](#ref-1)].
+5. Submit model G as well, so the clock assumption is tested rather than assumed.
+6. Run a learned encoder [[5](#ref-5), [6](#ref-6), [7](#ref-7)] through the same streamed harness and the same folds, and
+   report it within-fold like the rest.
+
+## Bibliography
+
+1. <a id="ref-1"></a>NeuralBench organizers (2026). *EEG/EMG Foundation Challenge 2026* (Brain & Body Workshop, NeurIPS 2026), Track 03 — Sleep onset. https://neural-interfaces26.github.io/
+2. <a id="ref-2"></a>Muse Team (2026). *Muse Sleep-Onset EEG — EEG/EMG Foundation Challenge 2026, Track 03*. NEMAR (Neuroelectromagnetic Data Archive and Tools Resource). https://doi.org/10.82901/nemar.nm000287
+3. <a id="ref-3"></a>Krigolson, O. E., Williams, C. C., Norton, A., Hassall, C. D., & Colino, F. L. (2017). Choosing MUSE: Validation of a Low-Cost, Portable EEG System for ERP Research. *Frontiers in Neuroscience*, 11. https://doi.org/10.3389/fnins.2017.00109
+4. <a id="ref-4"></a>Silber, M. H., Ancoli-Israel, S., Bonnet, M. H., et al. (2007). The Visual Scoring of Sleep in Adults. *Journal of Clinical Sleep Medicine*, 3(2), 121–131. https://doi.org/10.5664/jcsm.26814
+5. <a id="ref-5"></a>Lawhern, V. J., Solon, A. J., Waytowich, N. R., et al. (2018). EEGNet: a compact convolutional neural network for EEG-based brain–computer interfaces. *Journal of Neural Engineering*, 15(5), 056013. https://doi.org/10.1088/1741-2552/aace8c
+6. <a id="ref-6"></a>Zhao, W., Jiang, X., Zhang, B., Xiao, S., & Weng, S. (2024). CTNet: a convolutional transformer network for EEG-based motor imagery classification. *Scientific Reports*, 14(1). https://doi.org/10.1038/s41598-024-71118-7
+7. <a id="ref-7"></a>El Ouahidi, Y., Lys, J., Thölke, P., et al. (2025). REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects. *Advances in Neural Information Processing Systems 38*, 25583–25619. https://doi.org/10.52202/085713-0760
+8. <a id="ref-8"></a>Jaeger, H., & Haas, H. (2004). Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication. *Science*, 304(5667), 78–80. https://doi.org/10.1126/science.1091277
+9. <a id="ref-9"></a>Lukoševičius, M., & Jaeger, H. (2009). Reservoir computing approaches to recurrent neural network training. *Computer Science Review*, 3(3), 127–149. https://doi.org/10.1016/j.cosrev.2009.03.005
+10. <a id="ref-10"></a>Angulo de Lafuente, F. (2026). *holographic-reservoir* (Python package, Apache-2.0). https://pypi.org/project/holographic-reservoir/
+11. <a id="ref-11"></a>Holland, P. W., & Welsch, R. E. (1977). Robust regression using iteratively reweighted least-squares. *Communications in Statistics - Theory and Methods*, 6(9), 813–827. https://doi.org/10.1080/03610927708827533
+12. <a id="ref-12"></a>Hjorth, B. (1970). EEG analysis based on time domain properties. *Electroencephalography and Clinical Neurophysiology*, 29(3), 306–310. https://doi.org/10.1016/0013-4694(70)90143-4
+13. <a id="ref-13"></a>De Gennaro, L., & Ferrara, M. (2003). Sleep spindles: an overview. *Sleep Medicine Reviews*, 7(5), 423–440. https://doi.org/10.1053/smrv.2002.0252
+14. <a id="ref-14"></a>Ogilvie, R. D. (2001). The process of falling asleep. *Sleep Medicine Reviews*, 5(3), 247–270. https://doi.org/10.1053/smrv.2001.0145
+15. <a id="ref-15"></a>Ohayon, M. M. (2002). Epidemiology of insomnia: what we know and what we still need to learn. *Sleep Medicine Reviews*, 6(2), 97–111. https://doi.org/10.1053/smrv.2002.0186
+16. <a id="ref-16"></a>Reinke, A., Tizabi, M. D., Baumgartner, M., et al. (2024). Understanding metric-related pitfalls in image analysis validation. *Nature Methods*, 21(2), 182–194. https://doi.org/10.1038/s41592-023-02150-0
+17. <a id="ref-17"></a>Kaufman, S., Rosset, S., Perlich, C., & Stitelman, O. (2012). Leakage in data mining. *ACM Transactions on Knowledge Discovery from Data*, 6(4), 1–21. https://doi.org/10.1145/2382577.2382579
+
+---
+
+<div align="center">
+<sub>Built by <a href="https://github.com/Agnuxo1">Francisco Angulo de Lafuente</a> · every figure is an animated
+rendering of the published file named in its footer · <a href="#sleep-onset-latency-from-four-channel-home-eeg-track-03">back to top ↑</a></sub>
+</div>
