@@ -4,6 +4,17 @@ Required by rules 04 (declare every external corpus and a compute estimate), 07
 (reproducibility audit) and 08 (method description, training and inference code,
 pre-training disclosures).
 
+## 0. Result
+
+W-bMAE **55.816** on the public test split, scored through the competition's own harness
+(`predict_streams` + `binned_mae` over the 40 public test recordings), against 60.10 for
+CTNet, 60.60 for EEGNet and 60.70 for the constant baseline published by the organisers.
+Five-fold cross-validation on the training release: 51.21 ± 1.44 with participants held
+out, 50.06 ± 2.05 on held-out recordings of participants seen in training.
+
+Submission size 7.6 kB, numpy-only inference, 11.9 s for the 5,869 public test windows
+against an 80-minute limit. Trained on CPU alone.
+
 **Participant:** Francisco Angulo de Lafuente (Agnuxo), Madrid, Spain. Solo participant,
 one-person team, no institutional affiliation.
 
@@ -77,7 +88,16 @@ Inference: the submitted model is numpy only, about 1 ms per window; the 5,869 w
 the public test split are scored in well under a minute, far inside the 80-minute limit.
 Submission size: 7.6 kB.
 
-## 5. Negative results, stated because they are part of the method
+## 5. Code
+
+Training and inference code, the experiment log and the reproduction instructions are
+public at https://github.com/Agnuxo1/holographic-reservoir-sleep-onset (Apache-2.0). The
+public data is not redistributed there: it is downloaded from NEMAR under its own terms,
+and no signal or participant-level artefact is committed.
+
+## 6. Observations
+
+Reported because they are part of the method, not because they change the result.
 
 The model above is the *control*. The author's own Holographic-Reservoir — a sparse
 expander-graph reservoir with SHA-256 derived entropy on its diagonal, read out
@@ -87,10 +107,3 @@ that the less memory it kept, the better it scored. The reservoir with and witho
 SHA-256 entropy term scored the same to within 0.02 s across three seeds. The full
 ablation ladder and the numbers are in the public repository, including the runs that went
 against the hypothesis.
-
-## 6. Code
-
-Training and inference code, the experiment log and the reproduction instructions are
-public at https://github.com/Agnuxo1/holographic-reservoir-sleep-onset (Apache-2.0). The
-public data is not redistributed there: it is downloaded from NEMAR under its own terms,
-and no signal or participant-level artefact is committed.
