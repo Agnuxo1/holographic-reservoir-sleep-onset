@@ -11,3 +11,8 @@ neuraltrain==0.4.0
 nemar-py>=0.3.1
 mne>=1.13
 braindecode>=1.8
+
+# Used by the synthetic model ladder and the reservoir ablation.
+# Independent Apache-2.0 package owned by the same author.
+# The submitted Explicit-Memory-Sleep inference imports only NumPy.
+holographic-reservoir==1.0.0
