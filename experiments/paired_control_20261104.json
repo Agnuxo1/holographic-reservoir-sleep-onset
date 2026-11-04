@@ -1,0 +1,15 @@
+{
+  "source": "Public warm-up split; official starter kit 423b5af; paired per-recording evaluation on CPU",
+  "candidate_sha256": "3336cc18545f1ed484825861d8d57bb43eb9ccb87ffcf0de3c3f5514134da467",
+  "recordings": 40,
+  "windows": 5869,
+  "units": "seconds",
+  "candidate_wbmae": 55.81630288484202,
+  "constant_35s_wbmae": 60.741679772224096,
+  "relative_improvement_pct": 8.108726834443523,
+  "recordings_candidate_better": 32,
+  "recordings_constant_better": 8,
+  "recordings_tied": 0,
+  "runtime_seconds": 14.29,
+  "limit": "Descriptive public warm-up result; no sealed score or leaderboard claim."
+}
