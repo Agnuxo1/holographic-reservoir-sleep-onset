@@ -35,7 +35,15 @@ harness — 4.3 s better than the best published baseline.**
 | **This entry** | **55.82** |
 | CTNet (published by the organisers) | 60.10 |
 | EEGNet (published by the organisers) | 60.60 |
-| Constant 35 s (published by the organisers) | 60.70 |
+| Constant 35 s (replayed on the same public recordings) | 60.74 |
+
+The paired replay used official kit revision `423b5af` on 40 public warm-up
+recordings (5,869 windows). The explicit-memory model reduced W-bMAE by
+8.1% versus the fixed 35-second prediction and had lower error on 32 of
+40 recordings. These are descriptive public results. Sealed-phase
+performance is unknown. [Measured results](experiments/paired_control_20261104.json)
+
+![Measured public warm-up W-bMAE for the constant and explicit-memory model](figures/sleep-onset-warmup-evidence.gif)
 | REVE, fine-tuned (published by the organisers) | 72.90 |
 
 That number is not self-reported from my own scoring code: `code/verify_official.py` loads
