@@ -1,3 +1,11 @@
+> **Status update — 9 November 2026.** Registration for Tracks 02 and 03 was accepted by Codabench on 30 October. Track 03 sealed submissions remain postponed, with no confirmed opening date; the organiser will announce the opening. No sealed submission receipt or score has been verified in this recovery. Historical public warm-up results do not determine the final ranking. See the [current rules](https://neural-interfaces26.github.io/rules.html) and [Track 03 Scientific FAQ](https://github.com/neural-interfaces26/2026-competition/blob/main/codabench/pages/scientific_faq_sleep.md).
+>
+> The current evaluation limit is **60 minutes on one A100**. The original narrative below is retained as a historical research record: its 80-minute limit and “nothing submitted yet” badge are dated statements. A historical local checkpoint reports a completed warm-up entry; this recovery has not independently rechecked that entry in the authenticated submission history.
+>
+> Thirteen synthetic CPU component checks passed for the existing model definitions and captured official streaming helpers: output shape and bounds, resets, prefix causality, recording isolation, batch partitions and four deliberate error cases. This does **not** validate the complete submission ZIP, Solver, worker, dataset pipeline, objective, metric or predictive utility. Benchopt and NeuralBench were unavailable in the inspected server environment; the full worker was not run. No model was retrained, no dataset or study test was opened, and no GPU computation was used in this recovery.
+
+---
+
 <div align="center">
 
 <img src="docs/readme/01-banner.gif" alt="Sleep-onset latency from home EEG: four EEG traces calming while a countdown bar shrinks" width="100%">
