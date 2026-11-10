@@ -1,0 +1,17 @@
+{
+  "final_archive": "D:\\PROJECTS\\.cognition\\eeg-sealed-20261110\\final-linear-entry-v2\\explicit-memory-sleep-r01-sealed-20261110.zip",
+  "bytes": 17483,
+  "sha256": "e3dbd05f639f722b87bbee1a4b9c7fd06533386206cba308270f886d82f68cf1",
+  "files_sha256": {
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "METHOD.md": "7c0ea9836f65de1bfcc9afcbc6d86bd26e0066a1f32bf762f0422fa535a32514",
+    "SOURCE_RECORD.json": "9465f174e3c84eb5b533fbc158cf4a2b3b428a76019e31aaf489f28ab7806d16",
+    "submission.py": "67237b4986af697bbad157b7f890e2ae6b67dc0c9074b702621969d1be1b62d1",
+    "weights.npz": "a0afd3db3e227e7cea91f5fca08b680e23405afc92f4c1c7376394eddd1862c3"
+  },
+  "candidate": "L",
+  "original_inference_source_unchanged": true,
+  "new_weights": true,
+  "previous_draft_sha256": "2724e361f29ff27b5e39918ab675ec8c3b51547f4f5d4ac97c9593bce43a6767",
+  "delta": "method readability only; code/weights/licence/provenance unchanged"
+}

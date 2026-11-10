@@ -1,0 +1,17 @@
+{
+  "rows": 61303,
+  "records": 412,
+  "streams": 412,
+  "participants": 170,
+  "original_fraction_adjacent_rows_same_record": 0.0022022119996084957,
+  "rows_monotonic_in_record_in_original_order": false,
+  "duplicate_record_time_rows": 31217,
+  "max_multiplicity": 13,
+  "records_with_multiple_streams": 0,
+  "records_with_multiple_subjects": 0,
+  "distinct_record_times": 30086,
+  "records_with_gaps_after_dedup": 411,
+  "sum_spans_5sec": 60619,
+  "finite_nonnegative_5second_timestamps": true,
+  "no_labels_features_or_identifiers_printed": true
+}

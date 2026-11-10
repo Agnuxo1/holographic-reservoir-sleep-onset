@@ -1,0 +1,26 @@
+{
+  "competition_url": "https://www.codabench.org/competitions/17983/",
+  "submission_page_url": "https://www.codabench.org/competitions/17983/#/participate-tab",
+  "track": "03 Sleep Onset",
+  "phase": "Sealed Final Phase",
+  "submission_id": "1046573",
+  "model_name": "Chronological Explicit Memory - R01-L",
+  "local_archive_sha256": "e3dbd05f639f722b87bbee1a4b9c7fd06533386206cba308270f886d82f68cf1",
+  "local_archive_bytes": 17483,
+  "platform_displayed_submission_date": "2026-11-10 18:33 CET",
+  "last_observed_status": "Finished",
+  "official_score": 49.82,
+  "official_metric": "W-bMAE macro (s)",
+  "official_rank": 38,
+  "leaderboard_entries_at_observation": 45,
+  "official_secondary_metrics": {
+    "W-bMAE (s)": 49.7,
+    "bMAE (s)": 135.4,
+    "MAE (s)": 275.48,
+    "Duration (s)": 90.31
+  },
+  "finished_verified": true,
+  "ranking_is_current_not_final": true,
+  "result_recorded_at_utc": "2026-11-10T17:43:26.572884+00:00",
+  "leaderboard_url": "https://www.codabench.org/competitions/17983/#/results-tab"
+}

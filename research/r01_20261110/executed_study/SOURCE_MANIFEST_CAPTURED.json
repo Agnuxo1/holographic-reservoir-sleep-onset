@@ -1,0 +1,7 @@
+{
+  "models.py": "a2c5f5d2f123e7194f35022d16c3d53a850d5176c365cf3a1bd99bd5e0484203",
+  "PROTOCOL.json": "cec63056d215857a89d3f6aab8dca0c8102c4d2dbf6430f416ca0b7afec0b486",
+  "residual_train_v2.py": "8f6f2a7105eb5974b81c0e8d5e4656d95379fed5a77b646b1bedba6698811404",
+  "sampled_control_private.npz": "24887053e8c28a9074a95f83140b7e2b2b19bd43755a41a3aa7eb02a5c96c2c9",
+  "train_features_private.npz": "9feed5fe90af0dd7b3da99a765ebf37c5db11b0dcf8a4d67fc2e68b3c4edf5db"
+}

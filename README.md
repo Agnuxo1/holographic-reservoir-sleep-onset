@@ -337,3 +337,40 @@ others are proposals and none is claimed as started:
 <sub>Built by <a href="https://github.com/Agnuxo1">Francisco Angulo de Lafuente</a> · every figure is an animated
 rendering of the published file named in its footer · <a href="#sleep-onset-latency-from-four-channel-home-eeg-track-03">back to top ↑</a></sub>
 </div>
+
+
+## Verified update — 10 November 2026
+
+Track 03 is open. The corrected chronological linear model completed the
+official sealed evaluation as submission **1046573**: **49.82 s W-bMAE macro**,
+with a visible position of **38/45 at observation**, not a final award.
+The [dated R01 report, code and receipts](research/r01_20261110/README.md)
+supersede the earlier postponed status and qualify the historical CV claims.
+
+The audit found that the old training cache had been sampled with replacement
+and was not chronological. Reconstructing every training index once improved
+the fixed public-training CV macro from 50.9290 to 48.9164 s; the paired 97.5%
+participant interval for the 2.0126 s gain is [1.1721, 2.8319] s. The nonlinear
+residual failed the fixed unseen/CI gates and was rejected. No raw EEG,
+feature caches, targets, identifiers or hidden evaluation data are published.
+The original narrative and all GIFs below/above remain historical records
+of the old model; old sampled-cache CV does not prove streaming parity.
+
+The selected weights were reproduced bit-for-bit and the exact final ZIP
+passed the real public worker and independent review before one official
+upload. Code and aggregate evidence are public; the exact model archive is
+backed up privately. Local CV, technical checks and the official result are
+reported separately. Full author attribution and source hashes are included.
+
+<!-- author-background:start -->
+## Author background
+
+**Francisco Angulo de Lafuente**, independent AI researcher · [ORCID](https://orcid.org/0009-0001-1634-7063) · [arXiv](https://arxiv.org/a/angulodelafuente_f_1.html) · [Google Scholar](https://scholar.google.com/citations?user=6nOpJ9IAAAAJ) · [ResearchGate](https://www.researchgate.net/profile/Francisco-Angulo-Lafuente-3) · [Figshare](https://figshare.com/authors/Francisco_Angulo_de_Lafuente/22601234) · [Wikipedia](https://es.wikipedia.org/wiki/Francisco_Angulo_de_Lafuente)
+
+Earlier research at ECOFA focused on biotechnology for clean energy and on second-generation biofuels obtained by microbiological processing of organic waste. Two Spanish patents document that work:
+
+- **ES 2273594 B1**, *Process for obtaining fuels from organic waste*. Filed 5 September 2005, grant published 16 February 2008. [OEPM](https://www.oepm.es/pdf/ES/0000/000/02/27/35/ES-2273594_B1.pdf) · [Google Patents](https://patents.google.com/patent/ES2273594B1/en)
+- **ES 2341194 B1**, *Method for obtaining paraffin by a biological process with microorganisms from organic matter, and its refining for use as fuel*. Filed 11 September 2007, grant published 26 April 2011. Also published as EP2196519 and WO2009034217. [OEPM](https://www.oepm.es/pdf/ES/0000/000/02/34/11/ES-2341194_B1.pdf) · [Google Patents](https://patents.google.com/patent/ES2341194B1/en)
+
+These are historical publication and grant records under the inventor name Francisco Angulo Lafuente, and both have since lapsed. They are cited as evidence of a research trajectory and make no statement about current enforceability.
+<!-- author-background:end -->

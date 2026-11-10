@@ -1,0 +1,66 @@
+{
+  "scores_by_regime": {
+    "unseen": {
+      "H": 51.033127348277944,
+      "L": 49.132253560752694,
+      "N": 51.062117882862445
+    },
+    "seen": {
+      "H": 50.82488333192529,
+      "L": 48.70052904576755,
+      "N": 46.4252215543011
+    }
+  },
+  "macro_scores": {
+    "H": 50.92900534010162,
+    "L": 48.91639130326013,
+    "N": 48.74366971858177
+  },
+  "candidates": {
+    "L": {
+      "macro_gain_seconds": 2.0126140368414944,
+      "regime_gain_seconds": {
+        "unseen": 1.9008737875252493,
+        "seen": 2.1243542861577396
+      },
+      "paired_participant_cluster_CI_97_5": [
+        1.1721112399620743,
+        2.8319417684975496
+      ],
+      "conditions": {
+        "macro_gain_at_least_0_5s": true,
+        "no_regime_regression": true,
+        "Bonferroni_97_5CI_lower_strictly_positive": true
+      },
+      "eligible": true
+    },
+    "N": {
+      "macro_gain_seconds": 2.185335621519844,
+      "regime_gain_seconds": {
+        "unseen": -0.028990534584501404,
+        "seen": 4.399661777624189
+      },
+      "paired_participant_cluster_CI_97_5": [
+        -0.3444405997862196,
+        4.485230326266277
+      ],
+      "conditions": {
+        "macro_gain_at_least_0_5s": true,
+        "no_regime_regression": false,
+        "Bonferroni_97_5CI_lower_strictly_positive": false
+      },
+      "eligible": false
+    }
+  },
+  "selected": "L",
+  "participants": 170,
+  "paired_record_count": 503,
+  "bootstrap_reps": 10000,
+  "bootstrap_seed": 20261110,
+  "two_candidates_family_error_control": "Bonferroni individual97.5% CIs; family<=5%",
+  "no_sealed_or_public_test_or_validation_metric": true,
+  "only_repaired_public_training_CV": true,
+  "official_score_unknown": true,
+  "paired_private_rows_sha256": "c9b7b92a2275eb61334896d8f4a229b9929df705460de66d8d955edbbade4b03",
+  "protocol_sha256": "cec63056d215857a89d3f6aab8dca0c8102c4d2dbf6430f416ca0b7afec0b486"
+}

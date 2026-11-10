@@ -1,0 +1,33 @@
+{
+  "trained_candidate": "L",
+  "alpha": 10.0,
+  "half_life_windows": 2.0,
+  "rows": 61303,
+  "records": 412,
+  "participants": 170,
+  "training_private_cache_sha256": "9feed5fe90af0dd7b3da99a765ebf37c5db11b0dcf8a4d67fc2e68b3c4edf5db",
+  "source_manifest_sha256": "9414f87ef6f6e1de30357682bb2a44340e59eed89ff7322f7be1b5b0795db433",
+  "first_training_completed_weights_saved": true,
+  "first_fit_seconds_not_recorded": true,
+  "first_parity_attempt_failed": "Wrong benchmark import root; ModuleNotFoundError before model was imported; no score or entry",
+  "independent_CPU_refit_parameters_bitwise_equal": true,
+  "reproduction_fit_seconds": 2.25235763398814,
+  "numpy_version": "2.5.2",
+  "training_GPU_used": false,
+  "CPU_affinity_count": 4,
+  "submission_source_original_byte_exact": true,
+  "weights_sha256": "a0afd3db3e227e7cea91f5fca08b680e23405afc92f4c1c7376394eddd1862c3",
+  "submission_py_sha256": "67237b4986af697bbad157b7f890e2ae6b67dc0c9074b702621969d1be1b62d1",
+  "finite_parameters": true,
+  "actual_loaded_Solver_vs_offline_synthetic_stream_parity": true,
+  "parity_windows": 12,
+  "parity_recordings": 2,
+  "max_abs_prediction_difference": 5.684341886080802e-14,
+  "parity_tolerance": {
+    "rtol": 0,
+    "atol": 1e-09
+  },
+  "no_public_test_or_validation_data_used": true,
+  "official_score_unknown": true,
+  "no_source_or_training_input_changes": true
+}

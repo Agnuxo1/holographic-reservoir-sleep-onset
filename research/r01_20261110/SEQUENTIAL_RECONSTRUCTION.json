@@ -1,0 +1,30 @@
+{
+  "state": "complete",
+  "rows": 61303,
+  "records": 412,
+  "participants": 170,
+  "clock_matches_all_records": true,
+  "unique_complete_dataset_indices": true,
+  "no_replacement_sampling": true,
+  "no_test_or_validation_loader_iterated": true,
+  "no_public_test_or_validation_metrics": true,
+  "original_source_and_sampled_train_cache_unchanged": true,
+  "original_pins": {
+    "D:\\PROJECTS\\.cognition\\concursos-24h\\nuevos-20261028\\trabajo\\eeg-emg-foundation\\code\\features.py": "fe15335d38e99cf9609dadc120d3825a2332752c212788c56f462011c573a907",
+    "D:\\PROJECTS\\.cognition\\concursos-24h\\nuevos-20261028\\trabajo\\eeg-emg-foundation\\code\\kit_compat.py": "603d1bfa0bb334584021b3f3db86bd9177a724b8e8526fd71815d920c3ce14e2",
+    "D:\\PROJECTS\\.cognition\\concursos-24h\\nuevos-20261028\\trabajo\\eeg-emg-foundation\\kit\\benchmark_utils\\nb_task.py": "6ca7fdd6b2d7a21a17feef33beefa08f6ceeba11977f27c2cf115c8531845b3a",
+    "D:\\PROJECTS\\.cognition\\concursos-24h\\nuevos-20261028\\trabajo\\eeg-emg-foundation\\cache\\train.npz": "4365370d7fe6dd1ae37cdc585ee32dd4a6ff6b45a75b68390831a93f53f2ad86"
+  },
+  "new_private_cache_sha256": "9feed5fe90af0dd7b3da99a765ebf37c5db11b0dcf8a4d67fc2e68b3c4edf5db",
+  "seconds": 172.92803569999523,
+  "GPU_used": false,
+  "CPU_threads": 4,
+  "versions": {
+    "numpy": "2.5.4",
+    "torch": "2.6.0+cu124",
+    "neuralbench": "0.4.0",
+    "neuralset": "0.4.0",
+    "neuralfetch": "0.4.0",
+    "neuraltrain": "0.4.0"
+  }
+}

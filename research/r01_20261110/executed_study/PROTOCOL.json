@@ -1,0 +1,79 @@
+{
+  "study": "EEG-R01-v2 repaired causal sequence and bounded nonlinear residual; pre-outcome amendment",
+  "amendment_reason": "Caught invalid chronology assertion before any GPU/model outcome; original cache came from replacement RegressionBinSampler, not complete streams.",
+  "rows": 61303,
+  "records": 412,
+  "participants": 170,
+  "training_data": "Only original412 publictrain recordings; no test/val loader iterated in reconstruction or study",
+  "source_sampled_cache_sha256": "4365370d7fe6dd1ae37cdc585ee32dd4a6ff6b45a75b68390831a93f53f2ad86",
+  "proper_cache_sha256": "9feed5fe90af0dd7b3da99a765ebf37c5db11b0dcf8a4d67fc2e68b3c4edf5db",
+  "record_time_join_rows": 61303,
+  "all_sampled_targets_match_proper": true,
+  "max_sampled_feature_difference": 0.0,
+  "cache_join_feature_tolerance": {
+    "rtol": 0,
+    "atol": 1e-05
+  },
+  "original_order_retained_in_sampled_control": true,
+  "folds": 5,
+  "fold_seed": 20261110,
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "regimes": [
+    "unseen",
+    "seen"
+  ],
+  "control": "H: EmaRidgealpha10half2 fitted sampled-cache foldtrain in original roworder; same complete ordered heldout streams as candidates",
+  "candidate_L": "L: identical IRLS/prior/scaler fitted complete chronological foldtrain",
+  "candidate_N": {
+    "architecture": [
+      151,
+      128,
+      128,
+      1
+    ],
+    "activation": "GELU",
+    "last_layer_initialisation": "zeros",
+    "base": "L",
+    "correction": "80*tanh(delta)",
+    "clip_seconds": [
+      0,
+      600
+    ],
+    "epochs": 80,
+    "batch_size": 4096,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "seed_ensemble": "equal arithmetic mean; no seed selection"
+  },
+  "fold_only": "Fit every prior/scaler/readout/residual on foldtrain only, no heldout early stopping/hyperparameter tuning",
+  "gate": {
+    "macro_mean_gain_seconds_at_least": 0.5,
+    "each_regime_gain_at_least": 0.0,
+    "paired_participant_cluster_bootstrap_lower_CI_strictly_above": 0.0,
+    "individual_CI_coverage": 0.975,
+    "two_candidate_Bonferroni_family_error_at_most": 0.05,
+    "bootstrap_reps": 10000,
+    "bootstrap_seed": 20261110,
+    "cluster_rule": "Shared participant multiplicity across both regimes, then within-regime recording mean and equal regime macro",
+    "selection": "If both eligible, greater macro gain; exact tie choose smaller linear L. If neither eligible close negative, no candidate upload."
+  },
+  "pilot": {
+    "epochs": 5,
+    "seed": 11,
+    "regime": "unseen",
+    "fold": 0,
+    "no_heldout_predictions_or_scores": true,
+    "timeout_seconds": 180,
+    "declared_VRAM_GiB": 6,
+    "declared_RAM_GiB": 8
+  },
+  "full_admission": "Observed pilot time/RAM/VRAM plus margin; single full study at most35min via normal managed queue",
+  "privacy": "Both train feature caches and opaque grouping arrays remain private; no raw signals or original participant identifiers; aggregate-only public reporting.",
+  "JEV": "connected/provenance=jev, fixed_two_candidate_bonferroni_study, confidence.99",
+  "prohibited": "No public-test/val scoring, hidden feedback tuning, gate changes after metrics, filling GPU for appearances, aliases/lane/campaign changes, cancellations, local/KaggleGPU."
+}

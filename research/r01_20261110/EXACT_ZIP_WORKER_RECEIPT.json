@@ -1,0 +1,45 @@
+{
+  "final_archive_sha256": "e3dbd05f639f722b87bbee1a4b9c7fd06533386206cba308270f886d82f68cf1",
+  "source_manifest_sha256": "97b261fca1bfbbc8f1666468cb73b65bb29d2dc965d1462886d6e6794c6f40f0",
+  "files_sha256": {
+    "METHOD.md": "7c0ea9836f65de1bfcc9afcbc6d86bd26e0066a1f32bf762f0422fa535a32514",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "weights.npz": "a0afd3db3e227e7cea91f5fca08b680e23405afc92f4c1c7376394eddd1862c3",
+    "submission.py": "67237b4986af697bbad157b7f890e2ae6b67dc0c9074b702621969d1be1b62d1",
+    "SOURCE_RECORD.json": "9465f174e3c84eb5b533fbc158cf4a2b3b428a76019e31aaf489f28ab7806d16"
+  },
+  "original_inference_source_unchanged": true,
+  "corrected_weights_verified": true,
+  "submission_read_only_unchanged": true,
+  "whole_ingestion_exit_code": 0,
+  "whole_scoring_exit_code": 0,
+  "finite_synthetic_metrics": true,
+  "synthetic_score_keys": [
+    "bmae",
+    "duration",
+    "mae",
+    "wbmae_recording_mean"
+  ],
+  "seconds": 22.481896240002243,
+  "versions": {
+    "benchopt": "1.10.0",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.5.2",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "pyarrow": "26.0.0"
+  },
+  "fixture_shape": [
+    1,
+    4,
+    640
+  ],
+  "sampling_Hz": 128,
+  "CPU_affinity_count": 4,
+  "GPU_used": false,
+  "real_EEG_or_sealed_data_used": false,
+  "predictive_utility_claimed": false,
+  "sealed_image_equivalence_claimed": false,
+  "official_entry_submitted": false,
+  "official_score_unknown": true
+}
