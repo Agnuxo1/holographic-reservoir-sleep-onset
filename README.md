@@ -31,6 +31,10 @@ Licence: Apache-2.0.
 
 **Contents** — [Headline result](#headline-result) · [How it works](#how-it-works) · [Background](#background) · [Results in full](#results-in-full) · [Reproducing](#reproducing) · [Observations](#observations) · [Real-world applications](#real-world-applications) · [Possible improvements](#possible-improvements) · [Future work](#future-work) · [Bibliography](#bibliography)
 
+<!-- impact-note:start -->
+<sub><strong>Efficiency and practical value.</strong> Matching the readout to weighted absolute error and using a short explicit memory makes the selected sleep-onset model simpler than the tested reservoir variants. The reported unseen-participant error is 51.21 seconds versus 61.88 for the constant control. This illustrates the value of targeted features and a compact state; hardware energy and clinical benefits require separate evaluation. See the <a href="#results-in-full">controlled comparisons</a>.</sub>
+<!-- impact-note:end -->
+
 ## Headline result
 
 <p align="center"><img src="docs/readme/02-headline.gif" alt="Bars comparing this entry with the four baselines the organisers published, plus three stat tiles" width="100%"><br><sub>Animated figure A1 — Public test split, lower is better. Data: the table below and experiments/official_check.json.</sub></p>
