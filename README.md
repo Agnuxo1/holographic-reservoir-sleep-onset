@@ -32,7 +32,7 @@ Licence: Apache-2.0.
 **Contents** — [Headline result](#headline-result) · [How it works](#how-it-works) · [Background](#background) · [Results in full](#results-in-full) · [Reproducing](#reproducing) · [Observations](#observations) · [Real-world applications](#real-world-applications) · [Possible improvements](#possible-improvements) · [Future work](#future-work) · [Bibliography](#bibliography)
 
 <!-- impact-note:start -->
-<sub><strong>Efficiency and practical value.</strong> Matching the readout to weighted absolute error and using a short explicit memory makes the selected sleep-onset model simpler than the tested reservoir variants. The reported unseen-participant error is 51.21 seconds versus 61.88 for the constant control. This illustrates the value of targeted features and a compact state; hardware energy and clinical benefits require separate evaluation. See the <a href="#results-in-full">controlled comparisons</a>.</sub>
+<sub><strong>Efficiency and practical value.</strong> Correct chronological training replaces a sampled, shuffled cache with complete streams, aligning the lightweight linear model with its inference setting. The repository reports a reduction in public-training CV macro error from 50.9290 to 48.9164 seconds against the historical fit. The <a href="research/r01_20261110/README.md">R01 study</a> documents this CPU-trained correction and rejects the nonlinear alternative; these CV results remain distinct from its official sealed score and unmeasured clinical or energy benefits.</sub>
 <!-- impact-note:end -->
 
 ## Headline result
